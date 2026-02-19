@@ -64,15 +64,15 @@ python3 -m http.server 8000
 
 ## Vercel 배포 팁
 
-- 이 프로젝트는 정적 파일이 `web/` 아래에 있으므로 Vercel에서 404가 날 수 있습니다.
-- 레포에 포함된 `vercel.json`이 `/` 요청을 `/web/index.html`로 rewrite 하도록 설정되어 있습니다.
-- Vercel에서 **Redeploy**(최신 커밋 반영)하면 루트 URL에서 바로 앱이 열립니다.
+- 루트(`/`) 진입을 위해 레포 루트에도 `index.html`, `app.js`, `styles.css`를 포함했습니다.
+- `vercel.json`은 `/`, `/web`, `/web/` 요청을 `index.html`로 통합합니다.
+- Vercel에서 **Redeploy**(최신 커밋 반영, 캐시 끄기)하면 루트 URL에서 바로 앱이 열립니다.
 
 문제가 계속되면 Project Settings에서 아래를 확인하세요.
 - Framework Preset: `Other`
 - Root Directory: `./`
 - Build Command: 비움
-- Output Directory: 비움 (또는 사용하지 않음)
+- Output Directory: 비움 (설정하지 않음)
 
 
 ### Vercel 재배포 체크리스트 (404 계속 뜰 때)
@@ -83,7 +83,7 @@ python3 -m http.server 8000
    - Framework Preset: `Other`
    - Root Directory: `./`
    - Output Directory: 비움
-4. 루트(`/`) 404가 떠도, 이 레포는 `index.html`에서 자동으로 `/web/`로 리다이렉트됩니다.
+4. 루트(`/`)와 `/web/` 모두 동일 앱 화면이 열려야 정상입니다.
 
 테스트 URL:
 - `https://<your-project>.vercel.app/`
