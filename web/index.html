@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Design Insight MVP</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <h1>Design Insight (MVP)</h1>
+      <p class="muted">Human Design 기반 개인화 리딩 · 궁합 · 목표 코칭</p>
+    </header>
+
+    <main class="layout">
+      <section class="card">
+        <h2>1) 출생 정보 입력</h2>
+        <p id="load-status" class="status">로딩 중...</p>
+        <form id="birth-form" class="form-grid">
+          <label>이름<input name="name" required placeholder="홍길동" /></label>
+          <label>생년월일<input type="date" name="birthDate" required /></label>
+          <label>출생 시간<input type="time" name="birthTime" required /></label>
+          <label>출생지<input name="birthPlace" placeholder="Seoul, KR" required /></label>
+          <label>타임존
+            <select name="timezone" required>
+              <option>Asia/Seoul</option>
+              <option>Asia/Tokyo</option>
+              <option>America/New_York</option>
+              <option>Europe/London</option>
+            </select>
+          </label>
+          <button type="submit" class="btn">차트 생성</button>
+        </form>
+      </section>
+
+      <section id="chart-section" class="card hidden">
+        <h2>2) 차트 & 무료 요약</h2>
+        <div id="chart-core" class="pill-grid"></div>
+        <div class="report-block">
+          <h3>무료 요약 리포트</h3>
+          <p id="summary-report"></p>
+        </div>
+        <div class="report-block lock-wrap">
+          <h3>전체 리포트 (유료 언락)</h3>
+          <div id="full-report" class="locked"></div>
+          <div id="paywall" class="paywall">
+            <p>전체 리포트 잠금 상태 · 단건 ₩5,000 또는 구독 ₩9,900/월</p>
+            <div class="row">
+              <button class="btn" id="unlock-once">₩5,000 단건 결제(데모)</button>
+              <button class="btn ghost" id="unlock-sub">₩9,900 구독 결제(데모)</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid-2">
+        <article class="card">
+          <h2>3) 궁합 분석</h2>
+          <form id="compat-form" class="form-grid compact">
+            <label>상대 이름<input name="partnerName" placeholder="파트너 이름" required /></label>
+            <label>상대 타입
+              <select name="partnerType" required>
+                <option>Generator</option>
+                <option>Manifesting Generator</option>
+                <option>Projector</option>
+                <option>Manifestor</option>
+                <option>Reflector</option>
+              </select>
+            </label>
+            <button class="btn" type="submit">궁합 분석 생성</button>
+          </form>
+          <p id="compat-result" class="output"></p>
+        </article>
+
+        <article class="card">
+          <h2>4) 목표 기반 코칭</h2>
+          <form id="goal-form" class="form-grid compact">
+            <label>목표/고민
+              <textarea name="goal" rows="4" placeholder="예: 커리어 전환 준비" required></textarea>
+            </label>
+            <button class="btn" type="submit">코칭 받기</button>
+          </form>
+          <p id="goal-result" class="output"></p>
+        </article>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

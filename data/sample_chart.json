@@ -1,0 +1,51 @@
+{
+  "birth_info": {
+    "date": "1990-07-15",
+    "time": "18:30:00",
+    "timezone": "Asia/Seoul",
+    "location": {
+      "name": "Seoul, KR",
+      "latitude": 37.5665,
+      "longitude": 126.978
+    }
+  },
+  "design_info": {
+    "design_datetime_utc": "1990-04-18T07:15:30Z",
+    "design_sun_longitude": 128.45
+  },
+  "definition": {
+    "type": "Manifesting Generator",
+    "strategy": "Wait to respond, then inform",
+    "authority": "Emotional",
+    "profile": "3/5",
+    "definition": "Single",
+    "defined_centers": ["Sacral", "Throat", "Spleen"],
+    "undefined_centers": ["Head", "Ajna", "G", "Ego", "Solar Plexus", "Root"]
+  },
+  "placements": {
+    "personality": [
+      { "body": "Sun", "degree": 112.5, "gate": 34, "line": 3 },
+      { "body": "Earth", "degree": 292.5, "gate": 20, "line": 3 },
+      { "body": "Moon", "degree": 5.88, "gate": 27, "line": 6 }
+    ],
+    "design": [
+      { "body": "Sun", "degree": 24.1, "gate": 27, "line": 4 },
+      { "body": "Earth", "degree": 204.1, "gate": 28, "line": 4 },
+      { "body": "Moon", "degree": 300.52, "gate": 36, "line": 2 }
+    ]
+  },
+  "ai_summary": {
+    "strengths": [
+      "High sustainable workforce energy through defined Sacral",
+      "Fast expression when response is clear"
+    ],
+    "watchouts": [
+      "Avoid initiating from mind pressure",
+      "Wait emotional clarity before commitment"
+    ],
+    "weekly_focus": [
+      "Track yes/no sacral responses",
+      "Delay major decisions by one sleep cycle"
+    ]
+  }
+}
