@@ -73,3 +73,18 @@ python3 -m http.server 8000
 - Root Directory: `./`
 - Build Command: 비움
 - Output Directory: 비움 (또는 사용하지 않음)
+
+
+### Vercel 재배포 체크리스트 (404 계속 뜰 때)
+
+1. GitHub에 최신 커밋 push
+2. Vercel > Deployments > **Redeploy** (Use existing Build Cache 끄기)
+3. Project Settings
+   - Framework Preset: `Other`
+   - Root Directory: `./`
+   - Output Directory: 비움
+4. 루트(`/`) 404가 떠도, 이 레포는 `index.html`에서 자동으로 `/web/`로 리다이렉트됩니다.
+
+테스트 URL:
+- `https://<your-project>.vercel.app/`
+- `https://<your-project>.vercel.app/web/`
