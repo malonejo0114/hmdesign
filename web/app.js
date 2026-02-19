@@ -12,69 +12,21 @@ const PROFILES = ['1/3', '1/4', '2/4', '2/5', '3/5', '3/6', '4/1', '4/6', '5/1',
 const DEFINITIONS = ['Single', 'Split', 'Triple Split', 'Quadruple Split'];
 
 const TYPE_GUIDE = {
-  'Generator': {
-    label: 'Generator (제너레이터)',
-    short: '지속적인 에너지로 실행력을 내는 타입',
-    action: '반응이 오는 일부터 시작'
-  },
-  'Manifesting Generator': {
-    label: 'Manifesting Generator (발현하는 제너레이터)',
-    short: '빠르게 시도하고 수정하며 결과를 내는 타입',
-    action: '반응 후 알리고 빠르게 실행'
-  },
-  'Projector': {
-    label: 'Projector (프로젝터)',
-    short: '사람/상황을 읽고 방향을 제시하는 타입',
-    action: '인정·요청이 왔을 때 핵심 역량 발휘'
-  },
-  'Manifestor': {
-    label: 'Manifestor (매니페스터)',
-    short: '새로운 흐름을 먼저 시작하는 타입',
-    action: '중요 이해관계자에게 먼저 알리고 시작'
-  },
-  'Reflector': {
-    label: 'Reflector (리플렉터)',
-    short: '환경의 영향을 민감하게 반영하는 타입',
-    action: '시간을 두고 충분히 관찰 후 결정'
-  }
+  Generator: { label: '제너레이터', short: '지속적인 에너지로 실행력을 내는 타입', action: '반응이 오는 일부터 시작' },
+  'Manifesting Generator': { label: '발현하는 제너레이터', short: '빠르게 시도하고 수정하며 결과를 내는 타입', action: '반응 후 알리고 빠르게 실행' },
+  Projector: { label: '프로젝터', short: '사람/상황을 읽고 방향을 제시하는 타입', action: '인정·요청이 왔을 때 핵심 역량 발휘' },
+  Manifestor: { label: '매니페스터', short: '새로운 흐름을 먼저 시작하는 타입', action: '중요 이해관계자에게 먼저 알리고 시작' },
+  Reflector: { label: '리플렉터', short: '환경의 영향을 민감하게 반영하는 타입', action: '시간을 두고 충분히 관찰 후 결정' }
 };
 
 const AUTHORITY_GUIDE = {
-  Emotional: {
-    label: 'Emotional (감정 권위)',
-    short: '감정이 잔잔해진 뒤 결정하는 방식',
-    action: '중요 결정은 최소 1박 이상 두기'
-  },
-  Sacral: {
-    label: 'Sacral (천골 권위)',
-    short: '몸의 즉각적인 yes/no 반응을 따르는 방식',
-    action: '배에서 올라오는 반응을 먼저 체크'
-  },
-  Splenic: {
-    label: 'Splenic (비장 권위)',
-    short: '순간적인 직감 신호를 따르는 방식',
-    action: '처음 드는 직감 신호를 기록 후 실행'
-  },
-  Ego: {
-    label: 'Ego (의지 권위)',
-    short: '정말 내가 원하는지 의지를 기준으로 결정',
-    action: '의욕이 생기는 선택부터 우선순위화'
-  },
-  'Self-Projected': {
-    label: 'Self-Projected (자기투사 권위)',
-    short: '말로 꺼냈을 때 내 방향이 명확해지는 방식',
-    action: '신뢰하는 사람 앞에서 말로 확인'
-  },
-  Mental: {
-    label: 'Mental (멘탈/환경 권위)',
-    short: '환경과 대화를 통해 명확해지는 방식',
-    action: '성급한 결정보다 환경 바꿔가며 점검'
-  },
-  Lunar: {
-    label: 'Lunar (월 권위)',
-    short: '시간 흐름(주기)을 거쳐 명확해지는 방식',
-    action: '큰 결정을 서두르지 않고 주기 관찰'
-  }
+  Emotional: { label: '감정 권위', short: '감정이 잔잔해진 뒤 결정하는 방식', action: '중요 결정은 최소 1박 이상 두기' },
+  Sacral: { label: '천골 권위', short: '몸의 즉각적인 yes/no 반응을 따르는 방식', action: '배에서 올라오는 반응을 먼저 체크' },
+  Splenic: { label: '비장 권위', short: '순간적인 직감 신호를 따르는 방식', action: '처음 드는 직감 신호를 기록 후 실행' },
+  Ego: { label: '의지 권위', short: '정말 내가 원하는지 의지를 기준으로 결정', action: '의욕이 생기는 선택부터 우선순위화' },
+  'Self-Projected': { label: '자기투사 권위', short: '말로 꺼냈을 때 내 방향이 명확해지는 방식', action: '신뢰하는 사람 앞에서 말로 확인' },
+  Mental: { label: '멘탈/환경 권위', short: '환경과 대화를 통해 명확해지는 방식', action: '성급한 결정보다 환경 바꿔가며 점검' },
+  Lunar: { label: '월 권위', short: '시간 흐름(주기)을 거쳐 명확해지는 방식', action: '큰 결정을 서두르지 않고 주기 관찰' }
 };
 
 const STRATEGY_GUIDE = {
@@ -86,21 +38,22 @@ const STRATEGY_GUIDE = {
 };
 
 const SIGNATURE_GUIDE = {
-  Success: '올바른 흐름일 때 느끼는 상태: 성공감',
-  Peace: '올바른 흐름일 때 느끼는 상태: 평화로움',
-  Surprise: '올바른 흐름일 때 느끼는 상태: 놀라움/신선함',
-  Satisfaction: '올바른 흐름일 때 느끼는 상태: 만족감'
+  Success: '성공감',
+  Peace: '평화로움',
+  Surprise: '신선한 놀라움',
+  Satisfaction: '만족감'
 };
 
 const NOTSELF_GUIDE = {
-  Bitterness: '과하게 애쓰거나 인정받지 못할 때 느끼는 신호: 씁쓸함',
-  Anger: '내 리듬이 막힐 때 올라오는 신호: 분노',
-  Disappointment: '환경이 맞지 않을 때 느끼는 신호: 실망감',
-  Frustration: '억지로 밀어붙일 때 느끼는 신호: 답답함'
+  Bitterness: '씁쓸함',
+  Anger: '분노',
+  Disappointment: '실망감',
+  Frustration: '답답함'
 };
 
 function setStatus(message, isError = false) {
   const el = document.querySelector('#load-status');
+  if (!el) return;
   el.textContent = message;
   el.className = isError ? 'status error' : 'status ok';
 }
@@ -111,10 +64,9 @@ async function fetchReference() {
     try {
       const r = await fetch(path);
       if (!r.ok) continue;
-      const data = await r.json();
-      return { data, source: path };
+      return { data: await r.json(), source: path };
     } catch (_) {
-      // continue
+      // continue fallback
     }
   }
   return { data: FALLBACK_REF, source: 'fallback' };
@@ -136,11 +88,11 @@ function pick(list, seed, shift = 0) {
 function generateChart(form) {
   const seedKey = `${form.name}|${form.birthDate}|${form.birthTime}|${form.birthPlace}|${form.timezone}`;
   const seed = hashString(seedKey);
-
   const type = pick(TYPES, seed);
   const authority = pick(AUTHORITIES, seed, 3);
   const profile = pick(PROFILES, seed, 7);
   const definition = pick(DEFINITIONS, seed, 11);
+
   const strategyMap = {
     Generator: 'Wait to respond',
     'Manifesting Generator': 'Wait to respond, then inform',
@@ -161,67 +113,116 @@ function generateChart(form) {
   };
 }
 
+function bodyGraphSVG(seed = 1) {
+  const active = [seed % 9, (seed + 2) % 9, (seed + 4) % 9, (seed + 6) % 9];
+  const centers = [
+    [95, 15], [95, 56], [95, 102], [95, 148], [95, 194],
+    [30, 78], [160, 78], [50, 160], [140, 160]
+  ];
+
+  const centerSVG = centers.map(([x, y], idx) => {
+    const on = active.includes(idx);
+    return `<rect x="${x}" y="${y}" width="30" height="30" rx="6" fill="${on ? '#4dd0e1' : '#212a5f'}" stroke="#6a1b9a"/>`;
+  }).join('');
+
+  return `<svg viewBox="0 0 220 240" role="img" aria-label="운명코드 차트 미리보기">
+      <defs>
+        <linearGradient id="lineGrad" x1="0" x2="1">
+          <stop offset="0%" stop-color="#6a1b9a"/><stop offset="100%" stop-color="#4dd0e1"/>
+        </linearGradient>
+      </defs>
+      <rect x="1" y="1" width="218" height="238" rx="10" fill="#0b0f2f" stroke="#384487"/>
+      <path d="M110 30 L110 205 M45 92 L175 92 M65 175 L155 175 M45 92 L65 175 M175 92 L155 175" stroke="url(#lineGrad)" stroke-width="2" fill="none"/>
+      ${centerSVG}
+      <circle cx="110" cy="18" r="4" fill="#4dd0e1"/>
+    </svg>`;
+}
+
 function renderChartCore(chart) {
   const target = document.querySelector('#chart-core');
   target.innerHTML = '';
   const rows = [
-    ['타입', TYPE_GUIDE[chart.type].label],
-    ['타입 한줄설명', TYPE_GUIDE[chart.type].short],
+    ['타입', `${TYPE_GUIDE[chart.type].label} · ${TYPE_GUIDE[chart.type].short}`],
+    ['권위', `${AUTHORITY_GUIDE[chart.authority].label} · ${AUTHORITY_GUIDE[chart.authority].short}`],
     ['전략', STRATEGY_GUIDE[chart.strategy]],
-    ['권위', AUTHORITY_GUIDE[chart.authority].label],
-    ['권위 한줄설명', AUTHORITY_GUIDE[chart.authority].short],
     ['프로필', chart.profile],
     ['정의', chart.definition],
     ['좋은 상태', SIGNATURE_GUIDE[chart.signature]],
-    ['주의 신호', NOTSELF_GUIDE[chart.notSelf]]
+    ['경고 신호', NOTSELF_GUIDE[chart.notSelf]]
   ];
+
   rows.forEach(([k, v]) => {
     const el = document.createElement('span');
     el.className = 'pill';
     el.textContent = `${k}: ${v}`;
     target.append(el);
   });
+
+  document.querySelector('#chart-svg').innerHTML = bodyGraphSVG(chart.seed);
 }
 
 function buildSummary(chart, name) {
-  return `${name}님은 ${TYPE_GUIDE[chart.type].label}입니다. ` +
-    `${TYPE_GUIDE[chart.type].short}. ` +
-    `의사결정 방식은 ${AUTHORITY_GUIDE[chart.authority].label}으로, ${AUTHORITY_GUIDE[chart.authority].short}. ` +
-    `핵심 전략은 "${STRATEGY_GUIDE[chart.strategy]}" 입니다.`;
+  return `${name}님은 ${TYPE_GUIDE[chart.type].label} 타입입니다. ${TYPE_GUIDE[chart.type].short}. ` +
+    `결정 방식은 ${AUTHORITY_GUIDE[chart.authority].label}이며, ${AUTHORITY_GUIDE[chart.authority].short}. ` +
+    `핵심 전략은 '${STRATEGY_GUIDE[chart.strategy]}'입니다.`;
 }
 
 function buildFullReport(chart, name) {
   return [
-    `${name}님의 기본 성향은 ${TYPE_GUIDE[chart.type].label}에 가깝습니다. ${TYPE_GUIDE[chart.type].short}이라는 점이 일/관계의 핵심 패턴으로 반복됩니다.`,
-    `권위(결정 방식)는 ${AUTHORITY_GUIDE[chart.authority].label}입니다. 쉽게 말해 ${AUTHORITY_GUIDE[chart.authority].short}. 실제 행동으로는 '${AUTHORITY_GUIDE[chart.authority].action}'를 먼저 적용해보세요.`,
-    `전략은 '${STRATEGY_GUIDE[chart.strategy]}'입니다. 이 전략은 소극적이라는 뜻이 아니라, 내 에너지를 낭비하지 않고 결과가 잘 나오는 타이밍을 고르는 기준입니다.`,
-    `프로필 ${chart.profile}, 정의 ${chart.definition} 조합은 사람과 협업할 때 나오는 학습 패턴을 보여줍니다. 맞는 환경을 고르면 성장 속도가 빨라집니다.`,
-    `실천 포인트: (1) 하루 끝에 의사결정 로그 3줄 기록, (2) '${NOTSELF_GUIDE[chart.notSelf]}'가 올라올 때 즉시 멈춤, (3) '${SIGNATURE_GUIDE[chart.signature]}'가 느껴지는 행동을 매일 1개 반복.`
+    `${name}님의 기본 성향은 ${TYPE_GUIDE[chart.type].label}입니다. ${TYPE_GUIDE[chart.type].action}를 우선 원칙으로 두면 성과가 안정됩니다.`,
+    `권위는 ${AUTHORITY_GUIDE[chart.authority].label}입니다. 한 줄 요약: ${AUTHORITY_GUIDE[chart.authority].short}. 실천법: ${AUTHORITY_GUIDE[chart.authority].action}.`,
+    `전략 '${STRATEGY_GUIDE[chart.strategy]}'는 소극성의 의미가 아니라 타이밍 최적화 원칙입니다.`,
+    `프로필 ${chart.profile}, 정의 ${chart.definition}은 관계와 협업에서의 학습 방식입니다. 나에게 맞는 환경을 찾을수록 성장 속도가 빨라집니다.`,
+    `경고 신호는 '${NOTSELF_GUIDE[chart.notSelf]}', 좋은 신호는 '${SIGNATURE_GUIDE[chart.signature]}'입니다. 일주일에 1회 신호 점검 루틴을 권장합니다.`
   ].join('\n\n');
+}
+
+function renderReportPages(chart, name) {
+  const target = document.querySelector('#report-pages');
+  const sections = [
+    '서비스 안내 & 차트 요약',
+    `타입 해석: ${TYPE_GUIDE[chart.type].label}`,
+    `권위 해석: ${AUTHORITY_GUIDE[chart.authority].label}`,
+    `전략 해석: ${STRATEGY_GUIDE[chart.strategy]}`,
+    `프로필 ${chart.profile} 심층`,
+    `정의 ${chart.definition} 심층`,
+    '강점 사용법',
+    '주의 패턴 관리법',
+    '관계/일 적용 가이드',
+    `${name}님 4주 실행 플랜`
+  ];
+
+  target.innerHTML = sections.map((title, idx) => `
+    <article class="page-card">
+      <strong>${idx + 1}p</strong>
+      <span>${title}</span>
+    </article>
+  `).join('');
 }
 
 function analyzeCompatibility(myChart, partnerName, partnerType) {
   const synergy = myChart.type === partnerType ? '동일 타입 공명' : '상호 보완형 조합';
   return `${partnerName}님(${TYPE_GUIDE[partnerType].label})과의 조합은 ${synergy}에 가깝습니다.\n` +
-    `내 전략은 '${STRATEGY_GUIDE[myChart.strategy]}'입니다. 이 원칙을 먼저 지키면 관계 피로가 줄어듭니다.\n` +
-    `관계 팁: 주 1회 20분 체크인(이번 주 고마웠던 점/불편했던 점/다음 주 요청사항)을 고정하세요.`;
+    `내 전략 '${STRATEGY_GUIDE[myChart.strategy]}'를 우선 지키면 관계 피로가 줄어듭니다.\n` +
+    `주 1회 20분 체크인(고마운 점/불편한 점/다음 주 요청)을 고정해보세요.`;
 }
 
 function coachByGoal(chart, goalText) {
   return `목표: ${goalText}\n\n` +
-    `코칭 제안(쉽게):\n` +
-    `1) 결정 방식: ${AUTHORITY_GUIDE[chart.authority].label}\n` +
+    `1) 결정 방식(권위): ${AUTHORITY_GUIDE[chart.authority].label}\n` +
     `   - 뜻: ${AUTHORITY_GUIDE[chart.authority].short}\n` +
     `   - 실천: ${AUTHORITY_GUIDE[chart.authority].action}\n\n` +
     `2) 행동 전략: ${STRATEGY_GUIDE[chart.strategy]}\n` +
     `   - 뜻: 내 에너지가 잘 먹히는 타이밍을 먼저 고르는 것\n\n` +
     `3) 경고 신호: ${NOTSELF_GUIDE[chart.notSelf]}\n` +
-    `   - 이 신호가 올라오면 즉시 속도를 늦추고, 잠깐 환경을 바꾼 뒤 다시 판단하세요.`;
+    `   - 이 신호가 강해지면 속도를 늦추고 환경을 바꾼 뒤 재판단하세요.`;
 }
 
 async function main() {
   const ref = await fetchReference();
   setStatus(`준비 완료 · reference: ${ref.source}`, ref.source === 'fallback');
+
+  document.querySelector('#hero-svg').innerHTML = bodyGraphSVG(12);
 
   const chartSection = document.querySelector('#chart-section');
   const birthForm = document.querySelector('#birth-form');
@@ -246,11 +247,11 @@ async function main() {
     renderChartCore(currentChart);
     summaryReport.textContent = buildSummary(currentChart, currentName);
     fullReport.textContent = buildFullReport(currentChart, currentName);
+    renderReportPages(currentChart, currentName);
 
     lockWrap.classList.remove('unlocked');
     paywall.style.display = 'block';
     chartSection.classList.remove('hidden');
-
     setStatus(`차트 생성 완료 · seed ${currentChart.seed}`);
   });
 

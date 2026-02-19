@@ -3,17 +3,47 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Design Insight MVP</title>
+    <title>운명코드 | Human Design 리딩</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="topbar">
-      <h1>Design Insight (MVP)</h1>
-      <p class="muted">Human Design 기반 개인화 리딩 · 궁합 · 목표 코칭</p>
+    <div class="stars" aria-hidden="true"></div>
+    <header class="topbar glass">
+      <div class="brand-wrap">
+        <div class="logo" aria-label="운명코드 로고">
+          <svg viewBox="0 0 120 120" role="img" aria-hidden="true">
+            <circle cx="60" cy="60" r="44" class="ring" />
+            <circle cx="60" cy="60" r="18" class="core" />
+            <path d="M60 16 L60 104 M16 60 L104 60 M28 28 L92 92 M92 28 L28 92" class="grid" />
+            <circle cx="60" cy="16" r="4" class="node" />
+            <circle cx="104" cy="60" r="4" class="node" />
+            <circle cx="60" cy="104" r="4" class="node" />
+            <circle cx="16" cy="60" r="4" class="node" />
+          </svg>
+        </div>
+        <div>
+          <h1>운명코드</h1>
+          <p class="muted">운명을 해독하는 코드 · Human Design 기반 개인화 리딩</p>
+        </div>
+      </div>
+      <button class="menu-btn" type="button">☰</button>
     </header>
 
     <main class="layout">
-      <section class="card">
+      <section class="hero card glass">
+        <div>
+          <p class="badge">AI 맞춤 해석 · 모바일 퍼스트</p>
+          <h2>과학과 운명으로 그리는 나만의 인생 설계도</h2>
+          <p class="hero-copy">생년월일/시간/출생지를 입력하면 Human Design 차트와 쉬운 한국어 리포트를 제공합니다.</p>
+          <p class="sample-quote">“예시: 지금은 서두를 시기가 아니라, 내 감정이 잔잔해진 뒤 결정할 때 결과가 좋아집니다.”</p>
+        </div>
+        <div class="hero-chart">
+          <h3>차트 미리보기</h3>
+          <div id="hero-svg"></div>
+        </div>
+      </section>
+
+      <section class="card glass">
         <h2>1) 출생 정보 입력</h2>
         <p id="load-status" class="status">로딩 중...</p>
         <form id="birth-form" class="form-grid">
@@ -29,12 +59,13 @@
               <option>Europe/London</option>
             </select>
           </label>
-          <button type="submit" class="btn">차트 생성</button>
+          <button type="submit" class="btn pulse">🔮 나의 차트 확인하기</button>
         </form>
       </section>
 
-      <section id="chart-section" class="card hidden">
+      <section id="chart-section" class="card glass hidden reveal">
         <h2>2) 차트 & 무료 요약</h2>
+        <div id="chart-svg" class="chart-svg"></div>
         <div id="chart-core" class="pill-grid"></div>
         <div class="report-block">
           <h3>무료 요약 리포트</h3>
@@ -43,6 +74,7 @@
         <div class="report-block lock-wrap">
           <h3>전체 리포트 (유료 언락)</h3>
           <div id="full-report" class="locked"></div>
+          <div id="report-pages" class="report-pages locked"></div>
           <div id="paywall" class="paywall">
             <p>전체 리포트 잠금 상태 · 단건 ₩5,000 또는 구독 ₩9,900/월</p>
             <div class="row">
@@ -54,7 +86,7 @@
       </section>
 
       <section class="grid-2">
-        <article class="card">
+        <article class="card glass reveal">
           <h2>3) 궁합 분석</h2>
           <form id="compat-form" class="form-grid compact">
             <label>상대 이름<input name="partnerName" placeholder="파트너 이름" required /></label>
@@ -72,11 +104,11 @@
           <p id="compat-result" class="output"></p>
         </article>
 
-        <article class="card">
+        <article class="card glass reveal">
           <h2>4) 목표 기반 코칭</h2>
           <form id="goal-form" class="form-grid compact">
             <label>목표/고민
-              <textarea name="goal" rows="4" placeholder="예: 커리어 전환 준비" required></textarea>
+              <textarea name="goal" rows="4" placeholder="예: 새로운 사업 준비를 어떻게 해야 할지" required></textarea>
             </label>
             <button class="btn" type="submit">코칭 받기</button>
           </form>
