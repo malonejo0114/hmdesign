@@ -60,3 +60,16 @@ python3 -m http.server 8000
 
 현재 웹앱의 차트 계산은 **데모용 결정론 로직**이며, 실제 Swiss Ephemeris 계산 엔진 연동 전 단계입니다.
 운영 배포 전에는 반드시 서버에서 천문 계산 기반으로 타입/권위/프로필을 계산하도록 교체해야 합니다.
+
+
+## Vercel 배포 팁
+
+- 이 프로젝트는 정적 파일이 `web/` 아래에 있으므로 Vercel에서 404가 날 수 있습니다.
+- 레포에 포함된 `vercel.json`이 `/` 요청을 `/web/index.html`로 rewrite 하도록 설정되어 있습니다.
+- Vercel에서 **Redeploy**(최신 커밋 반영)하면 루트 URL에서 바로 앱이 열립니다.
+
+문제가 계속되면 Project Settings에서 아래를 확인하세요.
+- Framework Preset: `Other`
+- Root Directory: `./`
+- Build Command: 비움
+- Output Directory: 비움 (또는 사용하지 않음)
