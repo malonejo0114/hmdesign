@@ -1,0 +1,834 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "source_policy": "Tropical zodiac, geocentric longitude, Swiss Ephemeris compatible",
+    "normalization": {
+      "datetime_standard": "ISO-8601",
+      "timezone_database": "IANA",
+      "compute_in_utc": true,
+      "design_offset": {
+        "type": "solar_longitude_delta",
+        "degrees": 88
+      }
+    }
+  },
+  "centers": [
+    {
+      "id": "head",
+      "name": "Head",
+      "kind": "awareness"
+    },
+    {
+      "id": "ajna",
+      "name": "Ajna",
+      "kind": "awareness"
+    },
+    {
+      "id": "throat",
+      "name": "Throat",
+      "kind": "expression"
+    },
+    {
+      "id": "g",
+      "name": "G",
+      "kind": "identity"
+    },
+    {
+      "id": "ego",
+      "name": "Heart/Ego",
+      "kind": "motor"
+    },
+    {
+      "id": "sacral",
+      "name": "Sacral",
+      "kind": "motor"
+    },
+    {
+      "id": "solar_plexus",
+      "name": "Solar Plexus",
+      "kind": "motor"
+    },
+    {
+      "id": "spleen",
+      "name": "Spleen",
+      "kind": "awareness"
+    },
+    {
+      "id": "root",
+      "name": "Root",
+      "kind": "motor"
+    }
+  ],
+  "type_rules": [
+    {
+      "type": "Reflector",
+      "rule": "defined_centers_count == 0",
+      "strategy": "Wait a lunar cycle"
+    },
+    {
+      "type": "Manifesting Generator",
+      "rule": "sacral_defined && motor_to_throat_connection",
+      "strategy": "Wait to respond, then inform"
+    },
+    {
+      "type": "Generator",
+      "rule": "sacral_defined && !motor_to_throat_connection",
+      "strategy": "Wait to respond"
+    },
+    {
+      "type": "Manifestor",
+      "rule": "!sacral_defined && non_sacral_motor_to_throat_connection",
+      "strategy": "Inform before action"
+    },
+    {
+      "type": "Projector",
+      "rule": "!sacral_defined && !motor_to_throat_connection && defined_centers_count > 0",
+      "strategy": "Wait for recognition and invitation"
+    }
+  ],
+  "authority_priority": [
+    "Emotional",
+    "Sacral",
+    "Splenic",
+    "Ego",
+    "Self-Projected",
+    "Mental",
+    "Lunar"
+  ],
+  "authority_rules": {
+    "Emotional": "solar_plexus_defined",
+    "Sacral": "!solar_plexus_defined && sacral_defined",
+    "Splenic": "!solar_plexus_defined && !sacral_defined && spleen_defined",
+    "Ego": "!solar_plexus_defined && !sacral_defined && !spleen_defined && ego_defined",
+    "Self-Projected": "throat_defined && g_defined && g_to_throat_connection",
+    "Mental": "projector_type && no_inner_authority_center_defined",
+    "Lunar": "reflector_type"
+  },
+  "definition_rules": {
+    "single": "all_defined_centers_connected_as_one_component",
+    "split": "two_components",
+    "triple_split": "three_components",
+    "quadruple_split": "four_components"
+  },
+  "planets": [
+    "Sun",
+    "Earth",
+    "Moon",
+    "North Node",
+    "South Node",
+    "Mercury",
+    "Venus",
+    "Mars",
+    "Jupiter",
+    "Saturn",
+    "Uranus",
+    "Neptune",
+    "Pluto"
+  ],
+  "gates": [
+    {
+      "gate": 1,
+      "index": 1,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 2,
+      "index": 2,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 3,
+      "index": 3,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 4,
+      "index": 4,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 5,
+      "index": 5,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 6,
+      "index": 6,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 7,
+      "index": 7,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 8,
+      "index": 8,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 9,
+      "index": 9,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 10,
+      "index": 10,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 11,
+      "index": 11,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 12,
+      "index": 12,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 13,
+      "index": 13,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 14,
+      "index": 14,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 15,
+      "index": 15,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 16,
+      "index": 16,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 17,
+      "index": 17,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 18,
+      "index": 18,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 19,
+      "index": 19,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 20,
+      "index": 20,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 21,
+      "index": 21,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 22,
+      "index": 22,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 23,
+      "index": 23,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 24,
+      "index": 24,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 25,
+      "index": 25,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 26,
+      "index": 26,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 27,
+      "index": 27,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 28,
+      "index": 28,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 29,
+      "index": 29,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 30,
+      "index": 30,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 31,
+      "index": 31,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 32,
+      "index": 32,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 33,
+      "index": 33,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 34,
+      "index": 34,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 35,
+      "index": 35,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 36,
+      "index": 36,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 37,
+      "index": 37,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 38,
+      "index": 38,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 39,
+      "index": 39,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 40,
+      "index": 40,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 41,
+      "index": 41,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 42,
+      "index": 42,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 43,
+      "index": 43,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 44,
+      "index": 44,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 45,
+      "index": 45,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 46,
+      "index": 46,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 47,
+      "index": 47,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 48,
+      "index": 48,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 49,
+      "index": 49,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 50,
+      "index": 50,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 51,
+      "index": 51,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 52,
+      "index": 52,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 53,
+      "index": 53,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 54,
+      "index": 54,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 55,
+      "index": 55,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 56,
+      "index": 56,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 57,
+      "index": 57,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 58,
+      "index": 58,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 59,
+      "index": 59,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 60,
+      "index": 60,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 61,
+      "index": 61,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 62,
+      "index": 62,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 63,
+      "index": 63,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    },
+    {
+      "gate": 64,
+      "index": 64,
+      "arc_deg": 5.625,
+      "line_deg": 0.9375
+    }
+  ],
+  "channels": [
+    {
+      "id": "64-47",
+      "centers": [
+        "head",
+        "ajna"
+      ]
+    },
+    {
+      "id": "61-24",
+      "centers": [
+        "head",
+        "ajna"
+      ]
+    },
+    {
+      "id": "63-4",
+      "centers": [
+        "head",
+        "ajna"
+      ]
+    },
+    {
+      "id": "17-62",
+      "centers": [
+        "ajna",
+        "throat"
+      ]
+    },
+    {
+      "id": "43-23",
+      "centers": [
+        "ajna",
+        "throat"
+      ]
+    },
+    {
+      "id": "11-56",
+      "centers": [
+        "ajna",
+        "throat"
+      ]
+    },
+    {
+      "id": "16-48",
+      "centers": [
+        "throat",
+        "spleen"
+      ]
+    },
+    {
+      "id": "20-57",
+      "centers": [
+        "throat",
+        "spleen"
+      ]
+    },
+    {
+      "id": "20-10",
+      "centers": [
+        "throat",
+        "g"
+      ]
+    },
+    {
+      "id": "8-1",
+      "centers": [
+        "throat",
+        "g"
+      ]
+    },
+    {
+      "id": "31-7",
+      "centers": [
+        "throat",
+        "g"
+      ]
+    },
+    {
+      "id": "33-13",
+      "centers": [
+        "throat",
+        "g"
+      ]
+    },
+    {
+      "id": "45-21",
+      "centers": [
+        "throat",
+        "ego"
+      ]
+    },
+    {
+      "id": "12-22",
+      "centers": [
+        "throat",
+        "solar_plexus"
+      ]
+    },
+    {
+      "id": "35-36",
+      "centers": [
+        "throat",
+        "solar_plexus"
+      ]
+    },
+    {
+      "id": "20-34",
+      "centers": [
+        "throat",
+        "sacral"
+      ]
+    },
+    {
+      "id": "34-10",
+      "centers": [
+        "sacral",
+        "g"
+      ]
+    },
+    {
+      "id": "2-14",
+      "centers": [
+        "g",
+        "sacral"
+      ]
+    },
+    {
+      "id": "5-15",
+      "centers": [
+        "sacral",
+        "g"
+      ]
+    },
+    {
+      "id": "29-46",
+      "centers": [
+        "sacral",
+        "g"
+      ]
+    },
+    {
+      "id": "59-6",
+      "centers": [
+        "sacral",
+        "solar_plexus"
+      ]
+    },
+    {
+      "id": "27-50",
+      "centers": [
+        "sacral",
+        "spleen"
+      ]
+    },
+    {
+      "id": "42-53",
+      "centers": [
+        "sacral",
+        "root"
+      ]
+    },
+    {
+      "id": "3-60",
+      "centers": [
+        "sacral",
+        "root"
+      ]
+    },
+    {
+      "id": "9-52",
+      "centers": [
+        "sacral",
+        "root"
+      ]
+    },
+    {
+      "id": "18-58",
+      "centers": [
+        "spleen",
+        "root"
+      ]
+    },
+    {
+      "id": "28-38",
+      "centers": [
+        "spleen",
+        "root"
+      ]
+    },
+    {
+      "id": "32-54",
+      "centers": [
+        "spleen",
+        "root"
+      ]
+    },
+    {
+      "id": "44-26",
+      "centers": [
+        "spleen",
+        "ego"
+      ]
+    },
+    {
+      "id": "25-51",
+      "centers": [
+        "g",
+        "ego"
+      ]
+    },
+    {
+      "id": "37-40",
+      "centers": [
+        "solar_plexus",
+        "ego"
+      ]
+    },
+    {
+      "id": "39-55",
+      "centers": [
+        "root",
+        "solar_plexus"
+      ]
+    },
+    {
+      "id": "41-30",
+      "centers": [
+        "root",
+        "solar_plexus"
+      ]
+    },
+    {
+      "id": "19-49",
+      "centers": [
+        "root",
+        "solar_plexus"
+      ]
+    },
+    {
+      "id": "57-10",
+      "centers": [
+        "spleen",
+        "g"
+      ]
+    },
+    {
+      "id": "34-57",
+      "centers": [
+        "sacral",
+        "spleen"
+      ]
+    }
+  ],
+  "ai_features": {
+    "reading_automation": {
+      "required_fields": [
+        "type",
+        "strategy",
+        "authority",
+        "profile",
+        "definition",
+        "defined_centers",
+        "undefined_centers",
+        "defined_channels",
+        "incarnation_cross"
+      ],
+      "output_sections": [
+        "core_identity",
+        "decision_guide",
+        "strengths",
+        "blind_spots",
+        "weekly_actions"
+      ]
+    },
+    "compatibility": {
+      "required_fields": [
+        "person_a_activated_gates",
+        "person_b_activated_gates",
+        "person_a_defined_channels",
+        "person_b_defined_channels"
+      ],
+      "output_sections": [
+        "electromagnetic_channels",
+        "compromise_channels",
+        "companionship",
+        "practical_relationship_advice"
+      ]
+    },
+    "goal_based_coaching": {
+      "required_fields": [
+        "current_state",
+        "goal_state",
+        "authority",
+        "type",
+        "undefined_centers",
+        "not_self_theme"
+      ],
+      "output_sections": [
+        "gap_analysis",
+        "design_aligned_actions",
+        "do_not_do_list",
+        "30_day_plan"
+      ]
+    }
+  },
+  "pricing_recommendation_krw": {
+    "basic_report": {
+      "min": 9900,
+      "max": 19900
+    },
+    "premium_report": {
+      "min": 49000,
+      "max": 99000
+    },
+    "subscription_monthly": {
+      "min": 5900,
+      "max": 12900
+    }
+  }
+}
