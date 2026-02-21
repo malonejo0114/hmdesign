@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>운명코드 | Human Design 차트</title>
+    <meta
+      name="description"
+      content="생년월일과 출생 정보를 기반으로 Human Design 차트와 AI 해석 리포트를 확인하세요."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Nanum+Myeongjo:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="stars" aria-hidden="true"></div>
+    <div class="glow glow-a" aria-hidden="true"></div>
+    <div class="glow glow-b" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <a class="logo" href="#">
+        <span class="logo-mark">✦</span>
+        <span class="logo-text">운명코드</span>
+      </a>
+      <nav class="top-actions" aria-label="빠른 메뉴">
+        <button class="ghost-btn">서비스 소개</button>
+        <button class="menu-btn" aria-label="메뉴 열기">☰</button>
+      </nav>
+    </header>
+
+    <main class="hero">
+      <section class="hero-copy">
+        <p class="badge">운명을 해독하는 코드</p>
+        <h1>과학과 운명으로 그리는<br />나만의 Human Design 차트</h1>
+        <p class="subtext">
+          이름, 생년월일, 출생시간, 출생지를 입력하면
+          <strong>AI 맞춤 해석 리포트</strong>를 제공합니다.
+        </p>
+
+        <ul class="feature-points">
+          <li>✨ 3분 내 차트 생성</li>
+          <li>🧠 AI 기반 성향 분석</li>
+          <li>📘 이해하기 쉬운 리포트</li>
+        </ul>
+
+        <form class="chart-form" id="chartForm">
+          <label>이름<input type="text" name="name" placeholder="홍길동" required /></label>
+          <label>생년월일<input type="date" name="birthDate" required /></label>
+          <label>출생시간<input type="time" name="birthTime" required /></label>
+          <label>출생지<input type="text" name="birthPlace" placeholder="서울, 대한민국" required /></label>
+          <button type="submit" class="cta-btn" id="ctaButton">🔮 나의 차트 확인하기</button>
+        </form>
+
+        <div class="trust-row" aria-label="서비스 신뢰 지표">
+          <p><strong>24K+</strong><span>생성된 리포트</span></p>
+          <p><strong>4.8/5</strong><span>사용자 만족도</span></p>
+          <p><strong>무료</strong><span>첫 차트 제공</span></p>
+        </div>
+      </section>
+
+      <section class="hero-visual" aria-live="polite">
+        <div class="chart-teaser" id="chartTeaser">
+          <div class="orbit orbit-1"></div>
+          <div class="orbit orbit-2"></div>
+          <div class="node n1"></div>
+          <div class="node n2"></div>
+          <div class="node n3"></div>
+          <div class="node n4"></div>
+          <div class="node n5"></div>
+          <svg viewBox="0 0 300 300" class="lines" aria-hidden="true">
+            <path d="M60 65 L240 85 L210 220 L85 240 Z" />
+            <path d="M60 65 L210 220" />
+            <path d="M240 85 L85 240" />
+          </svg>
+        </div>
+
+        <article class="sample-card" id="sampleCard">
+          <h2>AI 해석 미리보기</h2>
+          <p class="typing" id="typingText">예시: 당신은 타고난 통찰력과 리더십이 강한 타입입니다.</p>
+          <small id="sampleMeta">에너지 타입 · Generator</small>
+        </article>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
