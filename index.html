@@ -3,76 +3,54 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>운명코드 | Human Design 웹서비스</title>
-    <meta name="description" content="운명코드: Human Design 차트, Range 모드, 리포트 티어를 포함한 웹서비스 프로토타입" />
+    <title>운명코드 | Human Design</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Nanum+Myeongjo:wght@700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="stars" aria-hidden="true"></div>
-    <header class="topbar">
-      <a class="logo" href="#"><span class="logo-mark">✦</span><span class="logo-text">운명코드</span></a>
-      <button class="menu-btn">☰</button>
-    </header>
+    <main class="page">
+      <section class="app-shell" id="appShell">
+        <header class="app-header">
+          <h1>Jo Hanjin</h1>
+          <p id="headlineMeta">제너레이터 • 3 / 6 • 천골 권위</p>
+        </header>
 
-    <main class="container">
-      <section class="hero card">
-        <div>
-          <p class="badge">운명을 해독하는 코드</p>
-          <h1>과학과 운명으로 그리는<br />나만의 Human Design 차트</h1>
-          <p class="subtext">출생시간이 정확하지 않아도 <strong>Range 모드</strong>로 시작하고, 후보별 권위/프로필/정의를 비교할 수 있습니다.</p>
-          <form id="chartForm" class="chart-form">
-            <label>이름<input required placeholder="홍길동" /></label>
-            <label>생년월일<input type="date" required /></label>
-            <label>출생시간<input type="time" /></label>
-            <label>출생지<input required placeholder="서울, 대한민국" /></label>
-            <button id="ctaButton" class="cta-btn" type="submit">🔮 나의 차트 확인하기</button>
-          </form>
+        <div class="skin-toggle">
+          <button class="skin-btn active" data-skin="free">🆓 무료</button>
+          <button class="skin-btn" data-skin="paid">💎 유료</button>
         </div>
-        <article class="sample-card">
-          <h3>AI 해석 미리보기</h3>
-          <p id="typingText" class="typing"></p>
-          <small id="sampleMeta"></small>
-        </article>
-      </section>
 
-      <section class="plan card">
-        <h2>휴먼디자인 웹서비스 개발 계획(요약 반영)</h2>
-        <div class="plan-grid">
-          <div><h4>MVP</h4><p>차트 계산 API 연동, SVG 렌더링, Range 모드(3~5 후보), Basic PDF(6~10p)</p></div>
-          <div><h4>Production</h4><p>티어 확장(Mid/Deep), 후보 8개 비교, A/B 테스트, 모니터링/재발급/CI 자동화</p></div>
-          <div><h4>Enterprise</h4><p>멀티테넌시, 화이트라벨, API/SLA, 보안·감사 로그·컴플라이언스</p></div>
-        </div>
-        <pre class="pipeline">입력(로컬+TZ) → UTC 로그 → 계산(API/엔진) → Gate/Line 매핑 → Centers/Channels 산출 → SVG/PDF 출력</pre>
-      </section>
-
-      <section class="mobile-ui card">
-        <div class="mobile-header">
-          <h2>Jo Hanjin</h2>
-          <p>제너레이터 · 3/6 · 천골 권위</p>
-          <div class="skin-toggle">
-            <button data-skin="free" class="skin-btn active">🆓 무료</button>
-            <button data-skin="paid" class="skin-btn">💎 유료</button>
+        <section class="chart-wrap">
+          <svg id="bodygraph" viewBox="0 0 300 490" aria-label="휴먼디자인 바디그래프"></svg>
+          <div class="legend">
+            <span class="design">● 무의식</span>
+            <span class="personality">● 의식</span>
+            <span class="both">● 둘 다</span>
           </div>
-        </div>
+        </section>
 
-        <div class="chart-stage">
-          <svg id="bodygraph" viewBox="0 0 300 490" role="img" aria-label="Human Design Bodygraph"></svg>
-          <div class="legend"><span class="d">● 무의식</span><span class="p">● 의식</span><span class="b">● 둘 다</span></div>
-        </div>
+        <section class="detail" id="detailPanel">게이트 또는 센터를 누르면 상세 설명이 표시됩니다.</section>
 
-        <div id="detailPanel" class="detail-panel">게이트/센터를 선택하면 상세 설명이 표시됩니다.</div>
-
-        <div id="tabContent" class="tab-content"></div>
+        <section id="tabContent" class="tab-content"></section>
 
         <nav class="bottom-tabs">
-          <button data-tab="chart" class="tab-btn active">📊 차트</button>
-          <button data-tab="info" class="tab-btn">📋 정보</button>
-          <button data-tab="gates" class="tab-btn">🔢 게이트</button>
-          <button data-tab="centers" class="tab-btn">🔷 센터</button>
+          <button class="tab-btn active" data-tab="chart">📊 차트</button>
+          <button class="tab-btn" data-tab="info">📋 정보</button>
+          <button class="tab-btn" data-tab="gates">🔢 게이트</button>
+          <button class="tab-btn" data-tab="centers">🔷 센터</button>
         </nav>
+      </section>
+
+      <section class="plan-box">
+        <h2>개발 계획 반영 상태</h2>
+        <ul>
+          <li>MVP/Production/Enterprise 단계 요약 반영</li>
+          <li>Range 모드 안내 문구 반영</li>
+          <li>차트 SVG/탭/스킨 토글 반영</li>
+          <li>게이트/센터 클릭 상세 반영</li>
+        </ul>
       </section>
     </main>
 
