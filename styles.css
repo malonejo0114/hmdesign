@@ -1,8 +1,6 @@
 :root {
-  --bg: #141938;
-  --bg2: #0f1638;
   --text: #f5f7ff;
-  --muted: rgba(255, 255, 255, 0.6);
+  --muted: rgba(255, 255, 255, 0.72);
 }
 * { box-sizing: border-box; }
 body {
@@ -27,23 +25,11 @@ body {
   padding-bottom: 66px;
   position: relative;
 }
-.app-header {
-  text-align: center;
-  padding: 18px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
+.app-header { text-align: center; padding: 18px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
 .app-header h1 { margin: 0; font-size: 46px; font-weight: 700; }
 .app-header p { margin: 6px 0 0; font-size: 28px; color: #ff4d77; }
 .skin-toggle { display: flex; justify-content: center; gap: 14px; padding: 18px; }
-.skin-btn {
-  padding: 10px 20px;
-  border-radius: 12px;
-  border: 2px solid transparent;
-  background: rgba(255, 255, 255, 0.08);
-  color: #667;
-  font-size: 18px;
-  font-weight: 700;
-}
+.skin-btn { padding: 10px 20px; border-radius: 12px; border: 2px solid transparent; background: rgba(255, 255, 255, 0.08); color: #667; font-size: 18px; font-weight: 700; }
 .skin-btn.active { border-color: #ff4d77; color: #ff4d77; background: rgba(233, 69, 96, 0.15); }
 .chart-wrap { display: grid; place-items: center; }
 #bodygraph { width: min(760px, 95%); height: auto; }
@@ -51,57 +37,45 @@ body {
 .legend .design { color: #ff4d77; }
 .legend .personality { color: #6f7488; }
 .legend .both { color: #ffb000; }
-.detail {
-  margin: 0 14px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 12px;
-  padding: 12px;
-  font-size: 20px;
-}
+.detail { margin: 0 14px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 12px; padding: 12px; font-size: 20px; }
 .tab-content { padding: 12px 14px 0; display: grid; gap: 10px; }
-.info-card {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 10px;
-  padding: 12px;
-}
+.info-card { background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 10px; padding: 12px; }
 .info-card h4 { margin: 0 0 6px; color: #7ee6ff; font-size: 20px; }
 .info-card p { margin: 0; color: #d4d9f0; line-height: 1.45; font-size: 18px; }
 .bottom-tabs {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-  background: rgba(14, 19, 49, 0.95);
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 8px;
+  position: absolute; bottom: 0; left: 0; right: 0;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
+  background: rgba(14, 19, 49, 0.95); border-top: 1px solid rgba(255, 255, 255, 0.2); padding: 8px;
 }
-.tab-btn {
-  border: none;
-  border-radius: 10px;
-  background: transparent;
-  color: #8792b8;
-  padding: 8px;
-  font-size: 16px;
-}
+.tab-btn { border: none; border-radius: 10px; background: transparent; color: #8792b8; padding: 8px; font-size: 16px; }
 .tab-btn.active { color: #ff4d77; background: rgba(255, 77, 119, 0.1); }
+
 .plan-box {
   width: min(860px, 100%);
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 14px;
-  padding: 14px;
+  padding: 16px;
 }
-.plan-box h2 { margin: 0 0 8px; font-size: 20px; }
-.plan-box ul { margin: 0; color: #d5ddff; }
+.plan-box h2 { margin: 0 0 8px; font-size: 26px; }
+.plan-box h3 { margin: 18px 0 8px; font-size: 20px; color: #83e8ff; }
+.plan-box h4 { margin: 0 0 6px; color: #ff7093; }
+.plan-box .lead { margin: 0; color: var(--muted); line-height: 1.55; }
+.grid3 { display: grid; gap: 10px; grid-template-columns: repeat(3, 1fr); }
+.grid3 article { border: 1px solid rgba(255,255,255,.13); border-radius: 10px; padding: 10px; background: rgba(255,255,255,.04); }
+.criteria { font-size: 13px; color: #ffe4eb; }
+.plan-box ul, .plan-box ol { margin: 0; color: #d5ddff; padding-left: 20px; line-height: 1.55; }
+.pipeline { background: #03081f; border: 1px solid #ffffff1e; padding: 10px; border-radius: 10px; white-space: pre-wrap; color: #a8b8ee; font-size: 13px; }
+.plan-box table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.plan-box th, .plan-box td { border: 1px solid rgba(255,255,255,.2); padding: 8px; text-align: left; }
+.plan-box th { background: rgba(255,255,255,.07); }
 svg .gate, svg .center-shape { cursor: pointer; }
+
 @media (max-width: 900px) {
   .app-header h1 { font-size: 20px; }
   .app-header p { font-size: 14px; }
   .legend { font-size: 18px; }
   .detail, .info-card p, .info-card h4, .skin-btn, .tab-btn { font-size: 13px; }
+  .grid3 { grid-template-columns: 1fr; }
+  .plan-box h2 { font-size: 20px; }
 }
