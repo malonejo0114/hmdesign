@@ -2,13 +2,30 @@ const svg = document.getElementById('bodygraph');
 const detailPanel = document.getElementById('detailPanel');
 const tabContent = document.getElementById('tabContent');
 const appShell = document.getElementById('appShell');
+const headlineMeta = document.getElementById('headlineMeta');
+const form = document.getElementById('analysisForm');
+const chartModule = document.getElementById('chartModule');
+const summary = document.getElementById('analysisSummary');
 
 let skinType = 'free';
 let activeTab = 'chart';
 
+const profilePool = ['1 / 3', '2 / 4', '3 / 5', '3 / 6', '4 / 6', '5 / 1'];
+const typePool = ['제너레이터', '매니페스팅 제너레이터', '프로젝터', '매니페스터', '리플렉터'];
+const authorityPool = ['천골 권위', '감정 권위', '비장 권위', '자아 권위'];
+
 const userData = {
-  name: 'Jo Hanjin', type: '제너레이터', typeEn: 'Generator', strategy: '반응하기', authority: '천골 권위', profile: '3 / 6',
-  definition: '스플릿 정의', signature: '만족', notSelfTheme: '좌절', incarnationCross: '마야의 직각 십자가', crossGates: '42/32 | 61/62'
+  name: '샘플 사용자',
+  type: '제너레이터',
+  typeEn: 'Generator',
+  strategy: '반응하기',
+  authority: '천골 권위',
+  profile: '3 / 6',
+  definition: '스플릿 정의',
+  signature: '만족',
+  notSelfTheme: '좌절',
+  incarnationCross: '마야의 직각 십자가',
+  crossGates: '42/32 | 61/62'
 };
 
 const designGates = [61, 62, 44, 24, 53, 13, 9, 59, 37, 14];
@@ -52,35 +69,27 @@ const channels = [
 ];
 
 const gatePositions = [
-  { gate: 64, x: 130, y: 52 }, { gate: 61, x: 150, y: 42 }, { gate: 63, x: 170, y: 52 },
-  { gate: 47, x: 125, y: 110 }, { gate: 24, x: 150, y: 100 }, { gate: 4, x: 175, y: 110 },
-  { gate: 17, x: 120, y: 150 }, { gate: 43, x: 150, y: 158 }, { gate: 11, x: 180, y: 150 },
-  { gate: 62, x: 115, y: 180 }, { gate: 23, x: 135, y: 188 }, { gate: 56, x: 165, y: 188 },
-  { gate: 35, x: 185, y: 180 }, { gate: 20, x: 115, y: 212 }, { gate: 16, x: 125, y: 200 },
-  { gate: 12, x: 185, y: 200 }, { gate: 45, x: 115, y: 225 }, { gate: 21, x: 100, y: 238 },
-  { gate: 31, x: 132, y: 230 }, { gate: 8, x: 150, y: 222 }, { gate: 33, x: 168, y: 230 },
-  { gate: 7, x: 132, y: 250 }, { gate: 1, x: 150, y: 245 }, { gate: 13, x: 168, y: 250 },
-  { gate: 25, x: 118, y: 270 }, { gate: 46, x: 182, y: 270 }, { gate: 2, x: 150, y: 298 },
-  { gate: 15, x: 175, y: 285 }, { gate: 10, x: 125, y: 285 }, { gate: 51, x: 105, y: 268 },
-  { gate: 26, x: 75, y: 298 }, { gate: 40, x: 92, y: 310 }, { gate: 48, x: 32, y: 348 },
-  { gate: 57, x: 52, y: 342 }, { gate: 44, x: 75, y: 352 }, { gate: 50, x: 38, y: 382 },
-  { gate: 32, x: 55, y: 395 }, { gate: 28, x: 75, y: 382 }, { gate: 18, x: 42, y: 410 },
-  { gate: 36, x: 225, y: 348 }, { gate: 22, x: 248, y: 342 }, { gate: 37, x: 268, y: 352 },
-  { gate: 6, x: 225, y: 382 }, { gate: 49, x: 248, y: 395 }, { gate: 55, x: 265, y: 382 },
-  { gate: 30, x: 262, y: 410 }, { gate: 5, x: 122, y: 338 }, { gate: 14, x: 150, y: 328 },
-  { gate: 29, x: 178, y: 338 }, { gate: 34, x: 115, y: 355 }, { gate: 27, x: 185, y: 355 },
-  { gate: 59, x: 122, y: 378 }, { gate: 9, x: 150, y: 385 }, { gate: 3, x: 178, y: 378 },
-  { gate: 42, x: 138, y: 398 }, { gate: 53, x: 128, y: 412 }, { gate: 60, x: 150, y: 405 },
-  { gate: 52, x: 172, y: 412 }, { gate: 54, x: 122, y: 432 }, { gate: 38, x: 150, y: 458 },
-  { gate: 58, x: 132, y: 452 }, { gate: 19, x: 168, y: 452 }, { gate: 39, x: 178, y: 432 },
-  { gate: 41, x: 192, y: 448 }
+  { gate: 64, x: 130, y: 52 }, { gate: 61, x: 150, y: 42 }, { gate: 63, x: 170, y: 52 }, { gate: 47, x: 125, y: 110 },
+  { gate: 24, x: 150, y: 100 }, { gate: 4, x: 175, y: 110 }, { gate: 17, x: 120, y: 150 }, { gate: 43, x: 150, y: 158 },
+  { gate: 11, x: 180, y: 150 }, { gate: 62, x: 115, y: 180 }, { gate: 23, x: 135, y: 188 }, { gate: 56, x: 165, y: 188 },
+  { gate: 35, x: 185, y: 180 }, { gate: 20, x: 115, y: 212 }, { gate: 16, x: 125, y: 200 }, { gate: 12, x: 185, y: 200 },
+  { gate: 45, x: 115, y: 225 }, { gate: 21, x: 100, y: 238 }, { gate: 31, x: 132, y: 230 }, { gate: 8, x: 150, y: 222 },
+  { gate: 33, x: 168, y: 230 }, { gate: 7, x: 132, y: 250 }, { gate: 1, x: 150, y: 245 }, { gate: 13, x: 168, y: 250 },
+  { gate: 25, x: 118, y: 270 }, { gate: 46, x: 182, y: 270 }, { gate: 2, x: 150, y: 298 }, { gate: 15, x: 175, y: 285 },
+  { gate: 10, x: 125, y: 285 }, { gate: 51, x: 105, y: 268 }, { gate: 26, x: 75, y: 298 }, { gate: 40, x: 92, y: 310 },
+  { gate: 48, x: 32, y: 348 }, { gate: 57, x: 52, y: 342 }, { gate: 44, x: 75, y: 352 }, { gate: 50, x: 38, y: 382 },
+  { gate: 32, x: 55, y: 395 }, { gate: 28, x: 75, y: 382 }, { gate: 18, x: 42, y: 410 }, { gate: 36, x: 225, y: 348 },
+  { gate: 22, x: 248, y: 342 }, { gate: 37, x: 268, y: 352 }, { gate: 6, x: 225, y: 382 }, { gate: 49, x: 248, y: 395 },
+  { gate: 55, x: 265, y: 382 }, { gate: 30, x: 262, y: 410 }, { gate: 5, x: 122, y: 338 }, { gate: 14, x: 150, y: 328 },
+  { gate: 29, x: 178, y: 338 }, { gate: 34, x: 115, y: 355 }, { gate: 27, x: 185, y: 355 }, { gate: 59, x: 122, y: 378 },
+  { gate: 9, x: 150, y: 385 }, { gate: 3, x: 178, y: 378 }, { gate: 42, x: 138, y: 398 }, { gate: 53, x: 128, y: 412 },
+  { gate: 60, x: 150, y: 405 }, { gate: 52, x: 172, y: 412 }, { gate: 54, x: 122, y: 432 }, { gate: 38, x: 150, y: 458 },
+  { gate: 58, x: 132, y: 452 }, { gate: 19, x: 168, y: 452 }, { gate: 39, x: 178, y: 432 }, { gate: 41, x: 192, y: 448 }
 ];
 
 const gateDescriptions = {
-  61: '내면 진실의 게이트', 62: '세부사항의 게이트', 44: '경계의 게이트', 24: '귀환의 게이트', 53: '시작의 게이트', 13: '청취자의 게이트',
-  9: '집중의 게이트', 59: '성의 게이트', 37: '가족의 게이트', 14: '권력 기술의 게이트', 42: '성장의 게이트', 32: '연속성의 게이트',
-  28: '게임 플레이어의 게이트', 27: '양육의 게이트', 46: '육체의 게이트', 22: '열린 마음의 게이트', 7: '자아의 역할 게이트', 5: '기다림의 게이트',
-  60: '수용의 게이트', 34: '힘의 게이트'
+  61: '내면 진실의 게이트', 62: '세부사항의 게이트', 44: '경계의 게이트', 24: '귀환의 게이트', 53: '시작의 게이트',
+  42: '성장의 게이트', 32: '연속성의 게이트', 27: '양육의 게이트', 22: '열린 마음의 게이트', 34: '힘의 게이트'
 };
 const centerDescriptions = {
   HEAD: '영감과 정신적 압박', AJNA: '개념화와 정신 처리', THROAT: '표현과 현실화', G: '정체성, 방향, 사랑',
@@ -130,12 +139,14 @@ function renderChart() {
     ...Object.entries(centers).flatMap(([name, center]) => [centerShape(name, center), `<text x="${center.x}" y="${center.y + 3}" fill="#fff" font-size="8" font-weight="600" text-anchor="middle">${center.label}</text>`]),
     ...gatePositions.map(({ gate, x, y }) => `<text class="gate" data-gate="${gate}" x="${x}" y="${y}" fill="${gateColor(gate)}" font-size="${allActiveGates.includes(gate) ? 9 : 7}" font-weight="${allActiveGates.includes(gate) ? '700' : '400'}" text-anchor="middle">${gate}</text>`)
   ].join('');
+
   svg.innerHTML = markup;
 
   svg.querySelectorAll('.gate').forEach((el) => el.addEventListener('click', () => {
     const gate = Number(el.dataset.gate);
     detailPanel.textContent = `${gate}번 게이트 · ${gateDescriptions[gate] || '설명 준비중'} · ${allActiveGates.includes(gate) ? '활성 게이트' : '비활성 게이트'}`;
   }));
+
   svg.querySelectorAll('.center-shape').forEach((el) => el.addEventListener('click', () => {
     const c = el.dataset.center;
     detailPanel.textContent = `${centers[c].label} 센터 · ${activeCenters.includes(c) ? '정의됨' : '오픈'} · ${centerDescriptions[c]}`;
@@ -157,6 +168,35 @@ function renderTab() {
   }
 }
 
+function deterministicPick(seed, pool) {
+  return pool[Math.abs(seed) % pool.length];
+}
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const name = document.getElementById('inputName').value.trim();
+  const birthDate = document.getElementById('inputBirthDate').value;
+  const birthTime = document.getElementById('inputBirthTime').value || '시간 미상';
+  const birthPlace = document.getElementById('inputBirthPlace').value.trim();
+
+  const seed = `${name}${birthDate}${birthTime}${birthPlace}`.split('').reduce((acc, ch) => acc + ch.charCodeAt(0), 0);
+
+  userData.name = name;
+  userData.type = deterministicPick(seed, typePool);
+  userData.authority = deterministicPick(seed * 7, authorityPool);
+  userData.profile = deterministicPick(seed * 13, profilePool);
+
+  headlineMeta.textContent = `${userData.name} • ${userData.type} • ${userData.profile} • ${userData.authority}`;
+
+  summary.classList.remove('hidden');
+  chartModule.classList.remove('hidden');
+  summary.innerHTML = `✅ 분석 완료: <strong>${name}</strong> / ${birthDate} / ${birthTime} / ${birthPlace}<br/>아래에서 바디차트와 센터/게이트 정보를 확인하세요.`;
+
+  renderChart();
+  renderTab();
+  chartModule.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+
 document.querySelectorAll('.tab-btn').forEach((btn) => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.tab-btn').forEach((b) => b.classList.remove('active'));
@@ -174,6 +214,3 @@ document.querySelectorAll('.skin-btn').forEach((btn) => {
     renderChart();
   });
 });
-
-renderChart();
-renderTab();

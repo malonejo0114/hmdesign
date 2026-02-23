@@ -13,33 +13,49 @@
     <main class="page">
       <section class="app-shell" id="appShell">
         <header class="app-header">
-          <h1>Jo Hanjin</h1>
-          <p id="headlineMeta">제너레이터 • 3 / 6 • 천골 권위</p>
+          <h1>운명코드</h1>
+          <p id="headlineMeta">생년월일을 입력하고 나만의 바디차트를 확인하세요</p>
         </header>
 
-        <div class="skin-toggle">
-          <button class="skin-btn active" data-skin="free">🆓 무료</button>
-          <button class="skin-btn" data-skin="paid">💎 유료</button>
-        </div>
-
-        <section class="chart-wrap">
-          <svg id="bodygraph" viewBox="0 0 300 490" aria-label="휴먼디자인 바디그래프"></svg>
-          <div class="legend">
-            <span class="design">● 무의식</span>
-            <span class="personality">● 의식</span>
-            <span class="both">● 둘 다</span>
-          </div>
+        <section class="input-panel">
+          <h2>차트 분석 입력</h2>
+          <form id="analysisForm" class="analysis-form">
+            <label>이름<input id="inputName" name="name" type="text" placeholder="홍길동" required /></label>
+            <label>생년월일<input id="inputBirthDate" name="birthDate" type="date" required /></label>
+            <label>출생시간<input id="inputBirthTime" name="birthTime" type="time" /></label>
+            <label>출생지<input id="inputBirthPlace" name="birthPlace" type="text" placeholder="서울, 대한민국" required /></label>
+            <button type="submit" class="analyze-btn">🔮 분석하고 바디차트 보기</button>
+          </form>
+          <p class="hint">* 출생시간을 모르면 비워두고 진행하세요. Range 모드 후보 기준으로 보여줍니다.</p>
         </section>
 
-        <section class="detail" id="detailPanel">게이트 또는 센터를 누르면 상세 설명이 표시됩니다.</section>
-        <section id="tabContent" class="tab-content"></section>
+        <section id="analysisSummary" class="analysis-summary hidden" aria-live="polite"></section>
 
-        <nav class="bottom-tabs">
-          <button class="tab-btn active" data-tab="chart">📊 차트</button>
-          <button class="tab-btn" data-tab="info">📋 정보</button>
-          <button class="tab-btn" data-tab="gates">🔢 게이트</button>
-          <button class="tab-btn" data-tab="centers">🔷 센터</button>
-        </nav>
+        <section id="chartModule" class="chart-module hidden">
+          <div class="skin-toggle">
+            <button class="skin-btn active" data-skin="free">🆓 무료</button>
+            <button class="skin-btn" data-skin="paid">💎 유료</button>
+          </div>
+
+          <section class="chart-wrap">
+            <svg id="bodygraph" viewBox="0 0 300 490" aria-label="휴먼디자인 바디그래프"></svg>
+            <div class="legend">
+              <span class="design">● 무의식</span>
+              <span class="personality">● 의식</span>
+              <span class="both">● 둘 다</span>
+            </div>
+          </section>
+
+          <section class="detail" id="detailPanel">게이트 또는 센터를 누르면 상세 설명이 표시됩니다.</section>
+          <section id="tabContent" class="tab-content"></section>
+
+          <nav class="bottom-tabs">
+            <button class="tab-btn active" data-tab="chart">📊 차트</button>
+            <button class="tab-btn" data-tab="info">📋 정보</button>
+            <button class="tab-btn" data-tab="gates">🔢 게이트</button>
+            <button class="tab-btn" data-tab="centers">🔷 센터</button>
+          </nav>
+        </section>
       </section>
 
       <section class="plan-box">
@@ -76,53 +92,6 @@
             <p class="criteria">승인: 테넌트 데이터 분리, SLA 정책 준수</p>
           </article>
         </div>
-
-        <h3>2) 빠른 스택 비교</h3>
-        <table>
-          <thead><tr><th>접근</th><th>계산</th><th>장점</th><th>리스크</th></tr></thead>
-          <tbody>
-            <tr><td>API 우선</td><td>BodyGraph.info / Bodygraph.com</td><td>구현 속도 최고</td><td>정책/가격 의존</td></tr>
-            <tr><td>하이브리드</td><td>API + 일부 자체 로직</td><td>안정 + 브랜딩</td><td>표준화/QA 필요</td></tr>
-            <tr><td>자체 계산</td><td>Swiss Ephemeris 기반</td><td>통제/원가 최적화</td><td>라이선스 전략 필수</td></tr>
-          </tbody>
-        </table>
-
-        <h3>3) 데이터 파이프라인(고정)</h3>
-        <pre class="pipeline">입력(birth datetime/location) → IANA TZ(Asia/Seoul) → UTC 변환 로그
-→ 계산소스(API/자체) → Personality/Design activations
-→ Gate/Line 매핑 → definedChannels/definedCenters 산출
-→ Output JSON(definedCenters, definedChannels, activeGates, meta, range)
-→ SVG 렌더 + PDF 리포트</pre>
-
-        <h3>4) Range 퍼널 카피</h3>
-        <ul>
-          <li>입력: “출생시간을 몰라도 시작 가능합니다. 권위/프로필은 후보로 안내돼요.”</li>
-          <li>무료: “7일은 전략+권위만 실험해도 삶의 저항이 줄어듭니다.”</li>
-          <li>Range: “시간을 좁힐수록 권위가 확정됩니다. 공통분모부터 안내할게요.”</li>
-          <li>체크아웃: “후보별 권위·프로필·정의를 한 장 표로 정리해드립니다.”</li>
-        </ul>
-
-        <h3>5) QA/CI 체크리스트</h3>
-        <table>
-          <thead><tr><th>체크</th><th>실패 신호</th><th>자동화/대응</th></tr></thead>
-          <tbody>
-            <tr><td>앵커4 테스트</td><td>Sun/Earth Gate.Line 불일치</td><td>20~50 케이스 CI 고정</td></tr>
-            <tr><td>시간대/DST</td><td>환경별 결과 흔들림</td><td>로컬→UTC 로그 및 IANA 업데이트</td></tr>
-            <tr><td>Tropical 고정</td><td>결과 통째로 달라짐</td><td>설정 잠금 + 결과에 고정 표기</td></tr>
-            <tr><td>Design 88°</td><td>단순 88일 고정 오해</td><td>solcross 기준 구현/검증</td></tr>
-            <tr><td>SVG 안정성</td><td>스킨별 누락/깨짐</td><td>Playwright 시각 diff</td></tr>
-          </tbody>
-        </table>
-
-        <h3>6) 스프린트(2주)</h3>
-        <ol>
-          <li>S1: 입력폼 + API 연동 + 무료요약</li>
-          <li>S2: Range(3~5) + 비교표 + 결제</li>
-          <li>S3: Basic PDF + 재발급 + 이벤트 로그</li>
-          <li>S4: QA/CI(앵커4+경계값+시각diff)</li>
-          <li>S5: Mid/Deep + A/B 테스트</li>
-          <li>S6: 운영 고도화(모니터링/CS/환불정책)</li>
-        </ol>
       </section>
     </main>
 
