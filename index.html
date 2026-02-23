@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>운명코드 | Human Design</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="app-shell" id="appShell">
+        <header class="app-header">
+          <h1>운명코드</h1>
+          <p id="headlineMeta">생년월일을 입력하고 나만의 바디차트를 확인하세요</p>
+        </header>
+
+        <section class="input-panel">
+          <h2>차트 분석 입력</h2>
+          <form id="analysisForm" class="analysis-form">
+            <label>이름<input id="inputName" name="name" type="text" placeholder="홍길동" required /></label>
+            <label>생년월일<input id="inputBirthDate" name="birthDate" type="date" required /></label>
+            <label>출생시간<input id="inputBirthTime" name="birthTime" type="time" /></label>
+            <label>출생지<input id="inputBirthPlace" name="birthPlace" type="text" placeholder="서울, 대한민국" required /></label>
+            <button type="submit" class="analyze-btn">🔮 분석하고 바디차트 보기</button>
+          </form>
+          <p class="hint">* 출생시간을 모르면 비워두고 진행하세요. Range 모드 후보 기준으로 보여줍니다.</p>
+        </section>
+
+        <section id="analysisSummary" class="analysis-summary hidden" aria-live="polite"></section>
+
+        <section id="chartModule" class="chart-module hidden">
+          <div class="skin-toggle">
+            <button class="skin-btn active" data-skin="free">🆓 무료</button>
+            <button class="skin-btn" data-skin="paid">💎 유료</button>
+          </div>
+
+          <section class="chart-wrap">
+            <svg id="bodygraph" viewBox="0 0 300 490" aria-label="휴먼디자인 바디그래프"></svg>
+            <div class="legend">
+              <span class="design">● 무의식</span>
+              <span class="personality">● 의식</span>
+              <span class="both">● 둘 다</span>
+            </div>
+          </section>
+
+          <section class="detail" id="detailPanel">게이트 또는 센터를 누르면 상세 설명이 표시됩니다.</section>
+          <section id="tabContent" class="tab-content"></section>
+
+          <nav class="bottom-tabs">
+            <button class="tab-btn active" data-tab="chart">📊 차트</button>
+            <button class="tab-btn" data-tab="info">📋 정보</button>
+            <button class="tab-btn" data-tab="gates">🔢 게이트</button>
+            <button class="tab-btn" data-tab="centers">🔷 센터</button>
+          </nav>
+        </section>
+      </section>
+
+      <section class="plan-box">
+        <h2>휴먼디자인 웹서비스 개발 로드맵</h2>
+        <p class="lead">핵심 성공 조건: <strong>정확한 차트 계산</strong> + <strong>브랜드 일관 SVG 렌더링</strong> + <strong>유료 PDF 리포트</strong> + <strong>출생시간 모름 Range 퍼널</strong>.</p>
+
+        <h3>1) 단계별 구현 및 승인 기준</h3>
+        <div class="grid3">
+          <article>
+            <h4>MVP</h4>
+            <ul>
+              <li>입력(정확/대략/모름), 무료 요약, 후보 3~5</li>
+              <li>계산 API(BodyGraph.info/Bodygraph.com) + 캐시</li>
+              <li>Basic PDF(6~10p) + 비교표 1p</li>
+            </ul>
+            <p class="criteria">승인: 앵커4 Gate.Line 100% 일치, Asia/Seoul→UTC 로그, PDF 성공률 99%+</p>
+          </article>
+          <article>
+            <h4>Production</h4>
+            <ul>
+              <li>Mid/Deep 티어 확장 + 후보 8개 옵션</li>
+              <li>A/B 테스트(넛지/카피/후보수)</li>
+              <li>재발급/이벤트로그/CS 라우팅</li>
+            </ul>
+            <p class="criteria">승인: 모름 사용자 완료율 격차 +15%p 이내, 불일치 CS ≤ 1%</p>
+          </article>
+          <article>
+            <h4>Enterprise</h4>
+            <ul>
+              <li>멀티테넌시, 화이트라벨, 계약형 API</li>
+              <li>보안/감사 로그, 레이트리밋, SLA</li>
+              <li>브랜드/템플릿/도메인 분리</li>
+            </ul>
+            <p class="criteria">승인: 테넌트 데이터 분리, SLA 정책 준수</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
